@@ -1,3 +1,4 @@
+<!-- post_imageの投稿詳細 -->
 <div>
   <%= image_tag @post_image.get_image %>
   <p>ショップ名：<%= @post_image.title %></p>
@@ -10,6 +11,7 @@
   <% end %>
 </div>
 
+<!-- post_imageのコメント一覧 -->
 <div>
   <p>コメント件数：<%= @post_image.post_comments.count %></p>
   <% @post_image.post_comments.each do |post_comment| %>
@@ -22,6 +24,7 @@
   <% end %>
 </div>
 
+<!-- post_imageのコメント投稿 -->
 <div>
   <%= form_with model:[@post_image, @post_comment] do |f| %>
     <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
