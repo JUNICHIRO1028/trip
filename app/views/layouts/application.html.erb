@@ -5,12 +5,42 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/34dcc872b1.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav class="py-2 bg-body-tertiary border-bottom">
+      <div class="container d-flex flex-wrap">
+        <ul class="nav me-auto">
+          <li class="nav-item"><%= link_to '投稿フォーム', new_post_image_path, class: 'nav-link link-body-emphasis px-2' %></li>
+          <li class="nav-item"><%= link_to '投稿フォーム', new_post_image_path, class: 'nav-link link-body-emphasis px-2' %></li>
+          <li class="nav-item"><%= link_to '投稿フォーム', new_post_image_path, class: 'nav-link link-body-emphasis px-2' %></li>
+          <li class="nav-item"><%= link_to '投稿フォーム', new_post_image_path, class: 'nav-link link-body-emphasis px-2' %></li>
+          <li class="nav-item"><%= link_to '投稿フォーム', new_post_image_path, class: 'nav-link link-body-emphasis px-2' %></li>
+        </ul>
+        <ul class="nav">
+          <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: 'nav-link link-body-emphasis px-2' %></li>
+          <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: 'nav-link link-body-emphasis px-2' %></li>
+        </ul>
+      </div>
+    </nav>
+
+    <header class="py-3 mb-4 border-bottom">
+      <div class="container d-flex flex-wrap justify-content-center">
+        <a class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none" href="/">
+          <svg class="bi me-2" width="40" height="32"><%= image_tag('no_image.jpg') %></svg>
+          <span class="fs-4">Trip岩手</span>
+        </a>
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
+          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+        </form>
+      </div>
+    </header>
+
     <header>
       <% if user_signed_in? %>
         <li>
