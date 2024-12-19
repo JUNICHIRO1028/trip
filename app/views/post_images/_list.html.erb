@@ -1,0 +1,33 @@
+<!-- post_imageの投稿一覧/ユーザーの投稿一覧 -->
+<%= form_tag post_images_path, method: :get, class: 'boards__searchForm' do %>
+  <% tags.each do |tag| %>
+    <%= link_to tag.name, post_images_path(name: tag.id) %>
+  <% end %>
+    <%= link_to "全ての投稿", post_images_path %>
+
+<div class="row m-5">
+  <% post_images.each do |post_image| %>
+  <div class="col-md-4 p-2">
+    <div class="card shadow h-100">
+      <%= link_to post_image_path(post_image.id) do %>
+        <%= image_tag post_image.get_image, class:"card-img-top"; %>
+      <% end %>
+      <div class="card-body">
+        <div class="card-title">
+          <%= image_tag post_image.user.get_profile_image(100,100), class: "mt-1 rounded-circle"; %>
+          <span>By <%= post_image.user.name %> | </span>
+          <span><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class: "text-dark" %></span>
+        </div>
+        <p class="card-title">タイトル：<%= post_image.title %></p>
+        <p class="card-text">説明：<%= post_image.body %></p>
+        <p class="card-text">タグ：
+          <% post_image.tags.each do |tag| %>
+            <%= tag.name %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+<% end %>
