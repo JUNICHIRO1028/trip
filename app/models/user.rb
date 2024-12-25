@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  devise authentication_keys: [:email]
+
 
   has_many :post_images, dependent: :destroy
   has_many :post_comments, dependent: :destroy
