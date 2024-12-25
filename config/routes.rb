@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     resources :groups, only: [:new, :index, :show, :create, :edit, :update]
     get "search" => "searches#search"
   end
-
+  
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions_#guest_sign_in'
+  end
 
 end

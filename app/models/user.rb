@@ -33,5 +33,12 @@ class User < ApplicationRecord
     end
   end
 
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲスト"
+      #＊上記は一例です。他に必要なカラムがあれば追記してください＊
+    end
+  end
 
 end
