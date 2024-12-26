@@ -1,3 +1,21 @@
+<div class="container my-5">
+</div>
+<div class="container-fluid bg01">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h3 class="m-3 py-3">TO-KO-岩手</h3>
+        <div class="m-3">
+            <p>岩手の観光地、名物を投稿して、みんなにシェアしちゃおう！
+            <br>雄大な自然、美しい景色、おいしい食べ物、そして心温まる人々が待つ岩手県。
+            <br>あなたが感じた「魅力」を1枚の写真に収めて投稿してみませんか？
+            <br>そして、みんなが投稿した「魅力」を参考に、岩手を旅しよう！</p>
+            <%= link_to "新規登録", new_user_registration_path, class:'btn btn-outline-primary mr-3' %>
+            <%= link_to "ログイン", user_session_path, class:'btn btn-outline-secondary mr-3' %>
+            <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn btn-outline-success mr-3" %>
+    </div>
+    </div>
+  </div>
+</div>
 <h1>Homes#top</h1>
 <p>Find me in app/views/homes/top.html.erb</p>
 <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn btn-outline-secondary mr-3" %>
