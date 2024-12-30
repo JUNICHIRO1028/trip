@@ -4,3 +4,23 @@
   width: 100%;
   height: calc(100vh - 88px - 179px);
 }
+
+.ps-relative {
+  position: relative;
+}
+.ps-absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.filter {
+  background: #000;
+}
+.filter-img {
+  display: block;
+  opacity: .2; //どれくらい暗くするかを設定する数値。低いほど暗くなるようにしてます
+}
+.w-100 {
+  width: 100%;
+}
