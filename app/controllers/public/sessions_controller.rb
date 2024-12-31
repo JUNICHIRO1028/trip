@@ -8,7 +8,7 @@ class Public::SessionsController < Devise::SessionsController
     user = User.guest
     sign_in user
     flash[:notice] = "ゲストユーザーとしてログインしました。"
-    redirect_to root_path
+    redirect_to post_images_path
   end
 
 
