@@ -13,8 +13,6 @@
   </head>
 
   <body>
-    <div class="d-flex flex-column vh-100">
-
       <header class="shadow-sm">
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid">
@@ -27,22 +25,34 @@
               <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "投稿一覧", post_images_path, class:'nav-link text-dark' %>
+                  <%= link_to post_images_path, class:'nav-link text-dark' do %>
+                    <i class="fa-regular fa-images"></i> 投稿一覧
+                  <% end %>
                 </li>
                 <li class="nav-item">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:'nav-link text-dark' %>
+                  <%= link_to destroy_user_session_path, method: :delete, class:'nav-link text-dark' do %>
+                    <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+                  <% end %>
                 </li>
                 <li class="nav-item">
-                <%= link_to '投稿フォーム', new_post_image_path, class:'nav-link text-dark', data:{"turbolinks"=>false} %>
+                  <%= link_to new_post_image_path, class:'nav-link text-dark', data:{"turbolinks"=>false} do %>
+                    <i class="fa-solid fa-plus"></i> 投稿フォーム
+                  <% end %>
                 </li>
                 <li class="nav-item">
-                <%= link_to 'マイページ', user_path(current_user.id), class:'nav-link text-dark' %>
+                  <%= link_to user_path(current_user.id), class:'nav-link text-dark' do %>
+                    <i class="fa-regular fa-address-card"></i> マイページ
+                  <% end %>
                 </li>
                 <li class="nav-item">
-                <%= link_to 'グループを作成する', new_group_path, class:'nav-link text-dark' %>
+                  <%= link_to new_group_path, class:'nav-link text-dark' do %>
+                    <i class="fa-solid fa-users-rectangle"></i> グループを作成する
+                  <% end %>
                 </li>
                 <li class="nav-item">
-                <%= link_to 'グループ一覧', groups_path, class:'nav-link text-dark' %>
+                  <%= link_to groups_path, class:'nav-link text-dark' do %>
+                    <i class="fa-solid fa-people-group"></i> グループ一覧
+                  <% end %>
                 </li>
               <% else %>
                 <li class="nav-item">
@@ -58,12 +68,24 @@
         </nav>
       </header>
 
-      <main class="mb-auto">
-      <%= yield %>
+      <main>
+        <%= yield %>
       </main>
 
-      <footer></footer>
-    </div>
+      <footer class="container-fluid bg-secondary p-3">
+        <ul class="nav justify-content-center p-3">
+          <li class="nav-item">
+            <%= link_to "Home", root_path, class:'nav-link text-white' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "新規登録", new_user_registration_path, class:'nav-link text-white' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログイン", user_session_path, class:'nav-link text-white' %>
+          </li>
+        </ul>
+      </footer>
+
     <script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
   </body>
 </html>
