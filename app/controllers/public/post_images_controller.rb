@@ -23,6 +23,19 @@ class Public::PostImagesController < ApplicationController
     @post_comment = PostComment.new
   end
 
+  def edit
+    @post_image = params[:name].present? ? Tag.find(params[:name]).post_image : PostImage.find(params[:id])
+  end
+
+  def update
+    @post_image = params[:name].present? ? Tag.find(params[:name]).post_image : PostImage.find(params[:id])
+    if @post_image.update(post_image_params)
+    redirect_to post_image_path
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     post_image = PostImage.find(params[:id])
     post_image.destroy

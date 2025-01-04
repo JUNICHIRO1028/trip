@@ -23,6 +23,7 @@
             投稿日：<%= @post_image.created_at.strftime('%Y/%m/%d') %>
               <% if @post_image.user == current_user %>
                 <%= link_to "この投稿を削除する", post_image_path(@post_image), method: :delete %>
+                <%= link_to "この投稿を編集する", edit_post_image_path(@post_image) %>
               <% end %>
           </li>
           <li class="list-group-item">コメント件数：<%= @post_image.post_comments.count %></li>
