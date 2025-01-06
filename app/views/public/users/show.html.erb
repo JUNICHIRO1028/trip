@@ -1,11 +1,33 @@
 <!-- ユーザーの詳細 -->
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <% if @user == current_user %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
+<div class="row m-5">
+  <div class="col-md-7 p-2">
+    <h3>マイページ</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">image</th>
+          <th scope="col">name</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= image_tag @user.get_profile_image(100,100) %></td>
+          <td><%= @user.name %></td>
+          <td><%= link_to "グループを作成", new_group_path, class:'btn btn-success' %></td>
+          <td><%= link_to "グループ一覧", groups_path, class:'btn btn-success m-0' %></td>
+          <td> <% if @user == current_user %>
+                  <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success m-0" %>
+                <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+
 
 <!-- ユーザーの投稿一覧_list -->
 <%= render 'public/post_images/list', post_images: @post_images, tags: @tags %>

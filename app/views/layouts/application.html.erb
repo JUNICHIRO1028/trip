@@ -44,16 +44,6 @@
                     <i class="fa-regular fa-address-card"></i> マイページ
                   <% end %>
                 </li>
-                <li class="nav-item">
-                  <%= link_to new_group_path, class:'nav-link text-dark' do %>
-                    <i class="fa-solid fa-users-rectangle"></i> グループを作成する
-                  <% end %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to groups_path, class:'nav-link text-dark' do %>
-                    <i class="fa-solid fa-people-group"></i> グループ一覧
-                  <% end %>
-                </li>
               <% else %>
                 <li class="nav-item">
                   <%= link_to new_user_registration_path, class:'nav-link text-dark' do %>
