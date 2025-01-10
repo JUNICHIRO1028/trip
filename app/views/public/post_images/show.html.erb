@@ -2,7 +2,11 @@
   <div class="row">
     <div class="col-md-10 mx-auto p-2">
       <div class="card border-success shadow">
-        <%= image_tag @post_image.get_image, class:"card-img-top" %>
+        <% if @post_image.image.attached? %>
+          <%= image_tag @post_image.image, class:"card-img-top img-fluid max-width: 100%;, height: auto;" %>
+        <% else %>
+          <img src="/assets/no-image.jpg/100x100">
+        <% end %>
         <div class="card-body">
           <h5 class="card-title text-success text-center"><%= @post_image.title %></h5>
           <p class="card-text">説明：<%= @post_image.body %><p>

@@ -1,17 +1,28 @@
-<%= render 'public/searches/search' %>
-<!-- post_imageの投稿一覧/ユーザーの投稿一覧 -->
-<%= form_tag post_images_path, method: :get, class: 'boards__searchForm' do %>
-  <% tags.each do |tag| %>
-    <%= link_to tag.name, post_images_path(name: tag.id) %>
-  <% end %>
-    <%= link_to "全ての投稿", post_images_path %>
+<div class="row m-5">
+  <%= form_tag post_images_path, method: :get, class: 'boards__searchForm text-white' do %>
+  <div class = "drop-down">
+    <button class = "btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
+      タグを使って絞り込み
+    </button>
+    <div class = "dropdown-menu">
+      <% tags.each do |tag| %>
+        <%= link_to tag.name, post_images_path(name: tag.id), class: "dropdown-item" %>
+        <% end %>
+      <%= link_to "全ての投稿", post_images_path, class: "dropdown-item" %>
+    </div>
+  </div>
+</div>
 
 <div class="row m-5">
   <% post_images.each do |post_image| %>
   <div class="col-md-4 p-2">
     <div class="card border-success shadow h-100">
       <%= link_to post_image_path(post_image.id) do %>
-        <%= image_tag post_image.get_image, class:"card-img-top"; %>
+        <% if post_image.image.attached? %>
+          <%= image_tag post_image.image, class:"card-img-top img-fluid max-width: 100%;, height: auto;" %>
+        <% else %>
+          <img src="/assets/no-image.jpg/100x100">
+        <% end %>
       <% end %>
       <div class="card-body">
         <h5 class="card-title text-success text-center "><%= post_image.title %></h5>

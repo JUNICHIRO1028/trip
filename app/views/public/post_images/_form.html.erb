@@ -39,12 +39,13 @@
             </div>
 
 <!--タグ機能-->
-          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-              <%= tag.label do %>
-                <%= tag.check_box %>
-                <%= tag.text %>
+          <p>タグをつけよう！</p>
+              <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                  <%= tag.label do %>
+                    <%= tag.check_box %>
+                    <%= tag.text %>
+                  <% end %>
               <% end %>
-          <% end %>
           <%= f.submit '投稿', class: "btn btn-lg btn-block btn-info mt-4" %>
         <% end %>
       </div>
