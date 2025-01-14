@@ -21,7 +21,11 @@
           <li class="list-group-item"><div id="map"></div></li>
           <li class="list-group-item">
             <span>ユーザー：<%= image_tag @post_image.user.get_profile_image(70,70), class:"rounded" %></span>
-            <span><%= @post_image.user.name %></span>
+            <span>
+              <%= link_to user_path(@user) do %>
+                <%= @post_image.user.name %>
+              <% end %>
+            </span>
           </li>
           <!-- いいね -->
           <li class="list-group-item">

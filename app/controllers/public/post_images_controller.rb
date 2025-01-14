@@ -21,6 +21,7 @@ class Public::PostImagesController < ApplicationController
   def show
     @post_image = params[:name].present? ? Tag.find(params[:name]).post_image : PostImage.find(params[:id])
     @post_comment = PostComment.new
+    @user = @post_image.user_id
   end
 
   def edit
