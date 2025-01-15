@@ -1,4 +1,6 @@
 class Public::PostImagesController < ApplicationController
+  before_action :is_matching_login_user, only: [:edit, :update]
+
   def new
     @post_image = PostImage.new
   end
@@ -40,12 +42,19 @@ class Public::PostImagesController < ApplicationController
   def destroy
     post_image = PostImage.find(params[:id])
     post_image.destroy
-    redirect_to post_images_path
+    redirect_to user_path
   end
 
   private
 
   def post_image_params
     params.require(:post_image).permit(:title, :image, :body, :postcode, :address, tag_ids:[])
+  end
+
+  def is_matching_login_user
+    @post_image = params[:name].present? ? Tag.find(params[:name]).post_image : PostImage.find(params[:id])
+    unless @post_image.user.id == current_user.id
+      redirect_to post_images_path
+    end
   end
 end

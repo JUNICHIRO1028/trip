@@ -4,7 +4,7 @@
       <h5 class="text-dark bg-light py-4 mb-0">ユーザーログイン</h5>
       <div class="form-body p-4">
         <div class="mx-auto text-center">
-            <p>ユーザー名と<br>パスワードを入力してください。</p>
+            <p>メールアドレスと<br>パスワードを入力してください。</p>
         </div>
         <% if @user.errors.any? %>
             <ul class="alert alert-danger text-left" role="alert">
@@ -20,9 +20,9 @@
         <%= form_with model: @user, url: user_session_path, local: true do |f| %>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" aria-hidden="true"><i class="fas fa-user"></i></span>
+              <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
             </div>
-            <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "ユーザー名" %>
+            <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: "form-control" %>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
