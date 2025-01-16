@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   devise authentication_keys: [:email]
+  validates :password, presence: true, on: :create
+  validates :name, presence: true
+  validates :email, presence: true
 
   has_many :post_images, dependent: :destroy
   has_many :post_comments, dependent: :destroy
@@ -40,6 +43,10 @@ class User < ApplicationRecord
       user.name = "ゲスト"
       #＊上記は一例です。他に必要なカラムがあれば追記してください＊
     end
+  end
+
+  def active_for_authentication?
+    super && (is_deleted == false)
   end
 
 end

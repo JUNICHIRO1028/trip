@@ -35,19 +35,10 @@
             </div>
             <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: "form-control" %>
           </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-lock"></i></span>
-            </div>
-            <%= f.password_field :password, placeholder: "パスワード(#{@minimum_password_length}文字以上)", class: "form-control" %>
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-circle-check"></i></span>
-            </div>
-            <%= f.password_field :password_confirmation, placeholder: "パスワード確認", class: "form-control" %>
-          </div>
-          <%= f.submit "更新", class: "btn btn-block btn-info mt-5" %>
+          <%= f.submit "更新", class: "btn btn-block btn-info mt-3" %>
+          <% if user_signed_in? && @user.id == current_user.id %>
+            <%= link_to "退会", users_hide_user_path(current_user), method: :delete, "data-confirm" => "本当に退会しますか？？", class: "btn btn-block btn-outline-danger" %>
+          <% end %>
         <% end %>
       </div>
     </div>

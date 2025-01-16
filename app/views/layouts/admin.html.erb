@@ -11,6 +11,8 @@
   <% if admin_signed_in? %>
     <div class="text-right">
       <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+      <%= link_to "Home", root_path %>
+
     </div>
   <% end %>
   <%= yield %>

@@ -16,7 +16,11 @@ Rails.application.routes.draw do
       resource :favorite, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:show, :edit, :update] do
+      member do
+        delete :hide, as: 'users_hide'
+      end
+    end
     resources :groups, only: [:new, :index, :show, :create, :edit, :update]
     get "search" => "searches#search"
   end
