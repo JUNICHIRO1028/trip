@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update] do
       member do
         delete :hide, as: 'users_hide'
+        get :favorites
       end
     end
     resources :groups, only: [:new, :index, :show, :create, :edit, :update]

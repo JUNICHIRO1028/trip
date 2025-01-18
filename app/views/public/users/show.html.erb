@@ -20,6 +20,7 @@
           <td><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success m-0" %></td>
           <td><%= link_to "グループを作成", new_group_path, class:'btn btn-success' %></td>
           <td><%= link_to "グループ一覧", groups_path, class:'btn btn-success m-0' %></td>
+          <td><%= link_to "お気に入り一覧", favorites_user_path, class:'btn btn-success m-0' %></td>
         <% end %>
         </tr>
       </tbody>
