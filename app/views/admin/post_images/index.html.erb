@@ -1,0 +1,22 @@
+<div class="container mt-5">
+<h3>投稿一覧</h3>
+<table class="table mt-3">
+  <tr>
+    <th class="col-2">名前</th>
+    <th class="col-7">投稿写真</th>
+    <th class="col-1">投稿タイトル</th>
+    <th class="col-1">投稿説明</th>
+  </tr>
+<% @post_images.each do |post_image| %>
+  <tr>
+    <td class="col-2"><%= @users.find(post_image.user_id).name %></td>
+    <td class="col-7"><%= image_tag post_image.image, class:"img-fluid max-width: 20px;, height: 20px;" %></td>
+    <td class="col-1"><%= post_image.title %></td>
+    <td class="col-1"><%= post_image.body %></td>
+    <td class="col-1">
+    <%= link_to '削除', admin_post_image_path(post_image.id), method: :delete, data: { confirm: '本当に削除しますか?' },class: "btn btn-sm btn-danger" %>
+    </td>
+  </tr>
+<% end %>
+</table>
+</div>
