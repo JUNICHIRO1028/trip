@@ -35,7 +35,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-house"></i></span>
               </div>
-                <%= f.text_field :address,  class: 'form-control', placeholder: "住所" %>
+                <%= f.text_field :address, class: 'form-control', placeholder: "住所" %>
             </div>
 
 <!--タグ機能-->
@@ -46,6 +46,27 @@
                     <%= tag.text %>
                   <% end %>
               <% end %>
+
+<!--star機能-->
+    <div class="form-group" id="star">
+      <%= f.label :オススメ度！ %>
+      <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
+      <div id="post_raty"></div>
+    </div>
+    <script>
+      $(document).on('turbolinks:load', function() {
+        let elem = document.querySelector('#post_raty');
+        if (elem == null) return;
+        elem.innerHTML = ""
+        let opt = {
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          starHalf: "<%= asset_path('star-half.png') %>",
+          scoreName: 'post_image[star]',
+        };
+        raty(elem, opt);
+      });
+    </script>
           <%= f.submit '投稿', class: "btn btn-lg btn-block btn-info mt-4" %>
         <% end %>
       </div>
@@ -53,4 +74,4 @@
   </div>
 </div>
 
-    <script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
+<%= javascript_pack_tag "jpostal",  'data-turbolinks-track': 'reload' %>

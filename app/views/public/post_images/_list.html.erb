@@ -34,6 +34,24 @@
           <% end %>
         </li>
         <li class="list-group-item">いいね：❤️<%= post_image.favorites.count %></li>
+        <li class="list-group-item">
+          オススメ度！：<div id="star_<%= post_image.id %>"></div>
+                      <script>
+                        $(document).on('turbolinks:load', function() {
+                          let elem = document.querySelector('#star_<%= post_image.id %>');
+                          if (elem == null) return;
+                          elem.innerHTML = "";
+                          let opt = {
+                            starOn: "<%= asset_path('star-on.png') %>",
+                            starOff: "<%= asset_path('star-off.png') %>",
+                            starHalf: "<%= asset_path('star-half.png') %>",
+                            score: "<%= post_image.star %>",
+                            readOnly: true,
+                          };
+                          raty(elem, opt);
+                        });
+                      </script>
+          </li>
         <li class="list-group-item">コメント：
           <%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class: "card-link" %>
         </li>

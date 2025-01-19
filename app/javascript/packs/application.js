@@ -12,21 +12,13 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
+import Raty from "raty.js"
+window.raty = function(elem,opt) {
+  let raty =  new Raty(elem,opt)
+  raty.init();
+  return raty;
+}
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-jQuery(document).on("turbolinks:load", function() {
-  $('#post_image_postcode').jpostal({
-    postcode : [
-      // 取得する郵便番号のテキストボックスをidで指定
-      '#post_image_postcode'
-    ],
-    address: {
-      // %3 => 都道府県、 %4 => 市区町村 %5 => 町域 %6 => 番地 %7 => 名称
-      // それぞれを表示するコントロールをidで指定
-      "#post_image_address"  : "%3%4%5"
-    }
-  });
-});

@@ -40,12 +40,29 @@
 
 <!--タグ機能-->
           <p>タグをつけよう！</p>
-              <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-                  <%= tag.label do %>
-                    <%= tag.check_box %>
-                    <%= tag.text %>
-                  <% end %>
-              <% end %>
+            <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                <%= tag.label do %>
+                  <%= tag.check_box %>
+                  <%= tag.text %>
+                <% end %>
+            <% end %>
+          <p>オススメ度！</p>
+          <div id="star_<%= @post_image.id %>"></div>
+                        <script>
+                          $(document).on('turbolinks:load', function() {
+                            let elem = document.querySelector('#star_<%= @post_image.id %>');
+                            if (elem == null) return;
+                            elem.innerHTML = "";
+                            let opt = {
+                              starOn: "<%= asset_path('star-on.png') %>",
+                              starOff: "<%= asset_path('star-off.png') %>",
+                              starHalf: "<%= asset_path('star-half.png') %>",
+                              score: "<%= @post_image.star %>",
+                              readOnly: true,
+                            };
+                            raty(elem, opt);
+                          });
+                        </script>
           <%= f.submit '更新', class: "btn btn-lg btn-block btn-warning mt-4" %>
         <% end %>
       </div>
@@ -53,4 +70,4 @@
   </div>
 </div>
 
-    <script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
+<%= javascript_pack_tag "jpostal",  'data-turbolinks-track': 'reload' %>
