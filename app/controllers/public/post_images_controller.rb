@@ -48,7 +48,7 @@ class Public::PostImagesController < ApplicationController
   private
 
   def post_image_params
-    params.require(:post_image).permit(:title, :image, :body, :postcode, :address, tag_ids:[])
+    params.require(:post_image).permit(:title, :image, :body, :postcode, :address, :star, tag_ids:[])
   end
 
   def is_matching_login_user
