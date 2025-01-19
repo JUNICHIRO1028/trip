@@ -10,9 +10,11 @@
 <body>
   <% if admin_signed_in? %>
     <div class="text-right">
-      <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
       <%= link_to "Home", root_path %>
-
+      <%= link_to  "ダッシュボード", admin_dashboards_path %>
+      <%= link_to "コメント一覧", admin_comments_path %>
+      <%= link_to "投稿一覧", admin_post_images_path %>
+      <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
     </div>
   <% end %>
   <%= yield %>
