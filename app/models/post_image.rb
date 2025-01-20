@@ -15,6 +15,10 @@ class PostImage < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :star_count, -> {order(star: :desc)}
+
   def self.looks(search, word)
     if search == "perfect_match"
       @post_image = PostImage.where("title LIKE?","#{word}")

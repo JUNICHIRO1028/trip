@@ -1,6 +1,7 @@
 <div class="row m-5">
   <%= form_tag post_images_path, method: :get, class: 'boards__searchForm text-white' do %>
-  <div class = "drop-down">
+
+  <div class = "drop-down btn-group">
     <button class = "btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
       タグを使って絞り込み
     </button>
@@ -11,7 +12,19 @@
       <%= link_to "全ての投稿", post_images_path, class: "dropdown-item" %>
     </div>
   </div>
+
+  <div class = "drop-down btn-group">
+    <button class = "btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+      並び替え
+    </button>
+    <ul class = "dropdown-menu">
+      <li class="dropdown-item"><%= link_to '新しい順', post_images_path(latest: "true") %></li>
+      <li class="dropdown-item"><%= link_to '古い順', post_images_path(old: "true") %></li>
+      <li class="dropdown-item"><%= link_to 'オススメ順', post_images_path(star_count: "true") %></li>
+    </ul>
+  </div>
 </div>
+
 
 <div class="row m-5">
   <% post_images.each do |post_image| %>
@@ -52,6 +65,7 @@
                         });
                       </script>
           </li>
+        <li class="list-group-item">投稿日：<%= post_image.created_at.strftime('%Y/%m/%d') %></li>
         <li class="list-group-item">コメント：
           <%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class: "card-link" %>
         </li>
