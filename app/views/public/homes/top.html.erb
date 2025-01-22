@@ -10,15 +10,27 @@
         <div class="filter">
           <%= image_tag "01.webp", class: "d-block w-100 filter-img", alt: "ふなっこ流し" %>
         </div>
+        <div class="carousel-caption d-none d-md-block">
+          <h5>岩手の観光地、名物を投稿して、みんなにシェアしちゃおう！</h5>
+          <p><%= link_to "新規登録", new_user_registration_path, class:'btn btn-outline-primary' %></p>
+        </div>
       </div>
       <div class="carousel-item">
         <div class="filter">
           <%= image_tag "02.webp", class: "d-block w-100 filter-img", alt: "チャグチャグ馬っ子" %>
         </div>
+        <div class="carousel-caption d-none d-md-block">
+          <h5>みんなが投稿した「魅力」を検索して、岩手を旅しよう！</h5>
+          <p><%= link_to "ログイン", user_session_path, class:'btn btn-outline-secondary' %></p>
+        </div>
       </div>
       <div class="carousel-item">
         <div class="filter">
           <%= image_tag "03.webp", class: "d-block w-100 filter-img", alt: "わんこそば" %>
+        </div>
+        <div class="carousel-caption d-none d-md-block">
+          <h5>まずはお試しで！</h5>
+          <p><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn btn-outline-success"%></p>
         </div>
       </div>
 
@@ -32,20 +44,8 @@
       </a>
     </div>
 
-    <div class="ps-absolute" style="top: 38%; left: 42%;">
-      <h1 class="text-white">TOKO IWATE</h1>
-    </div>
-    <div class="ps-absolute" style="top: 45%; left: 35%;">
-      <p class="text-white">岩手の観光地、名物を投稿して、みんなにシェアしちゃおう！
-        <br>雄大な自然、美しい景色、おいしい食べ物、そして心温まる人々が待つ岩手県。
-        <br>あなたが感じた「魅力」を1枚の写真に収めて投稿してみませんか？
-        <br>そして、みんなが投稿した「魅力」を参考に、岩手を旅しよう！
-      </p>
-    </div>
-    <div class="ps-absolute" style="top: 59%; left: 38%;">
-          <%= link_to "新規登録", new_user_registration_path, class:'btn btn-outline-primary mr-3' %>
-          <%= link_to "ログイン", user_session_path, class:'btn btn-outline-secondary mr-3' %>
-          <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn btn-outline-success mr-3" %>
+    <div class="ps-absolute text-center text-white" style="top: 48%; left: 40%;">
+          <h1>TOKO IWATE</h1>
     </div>
   </div>
 </div>

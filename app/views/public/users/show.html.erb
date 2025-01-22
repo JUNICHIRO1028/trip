@@ -1,33 +1,24 @@
 <!-- ユーザーの詳細 -->
-<div class="row m-5 border-bottom" >
-  <div class="col-md-7 p-2">
-    <h5>ユーザーページ</h5>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th scope="col">image</th>
-          <th scope="col">name</th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= image_tag @user.get_profile_image(100,100) %></td>
-          <td><%= @user.name %></td>
-        <% if @user == current_user %>
-          <td><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success m-0" %></td>
-          <td><%= link_to "グループを作成", new_group_path, class:'btn btn-success' %></td>
-          <td><%= link_to "グループ一覧", groups_path, class:'btn btn-success m-0' %></td>
-          <td><%= link_to "お気に入り一覧", favorites_user_path, class:'btn btn-success m-0' %></td>
-        <% end %>
-        </tr>
-      </tbody>
-    </table>
+<h5 class="border-bottom shadow-sm m-5 p-2 text-center">
+  <i class="fa-solid fa-user"></i> ユーザーページ
+</h5>
+
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
+<div class="card border-success shadow"">
+        <%= image_tag @user.get_profile_image(200,200), class:"card-img-top" %>
+        <div class="card-body">
+          <h5 class="card-title text-center"><%= @user.name %></h5>
+          <% if @user == current_user %>
+            <p class="card-text"><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success m-0" %></p>
+            <p class="card-text"><%= link_to "お気に入り一覧", favorites_user_path, class:'btn btn-danger m-0' %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
 
 <!-- ユーザーの投稿一覧_list -->
 <%= render 'public/post_images/list', post_images: @post_images, tags: @tags %>

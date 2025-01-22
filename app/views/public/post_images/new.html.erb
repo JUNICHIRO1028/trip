@@ -39,7 +39,7 @@
             </div>
 
 <!--タグ機能-->
-          <p>タグをつけよう！</p>
+          <p><i class="fa-solid fa-hashtag"></i>タグをつけよう！</p>
               <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
                   <%= tag.label do %>
                     <%= tag.check_box %>
@@ -49,7 +49,7 @@
 
 <!--star機能-->
     <div class="form-group" id="star">
-      <%= f.label :オススメ度！ %>
+      <i class="fa-solid fa-star"></i><%= f.label :オススメ度！ %>
       <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
       <div id="post_raty"></div>
     </div>

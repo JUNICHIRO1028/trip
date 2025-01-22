@@ -39,39 +39,43 @@
       <% end %>
       <div class="card-body">
         <h5 class="card-title text-success text-center "><%= post_image.title %></h5>
-        <p class="card-text">説明：<%= post_image.body %></p>
+        <p class="card-text"><i class="fa-solid fa-pen-fancy"></i><%= post_image.body %></p>
+        <p class="card-text"><i class="fa-solid fa-location-dot"></i><%= post_image.address %></p>
+        <p class="card-text"><% post_image.tags.each do |tag| %>
+            <i class="fa-solid fa-hashtag"></i>
+            <%= link_to tag.name, post_images_path(name: tag.id) %>
+          <% end %>
+        </p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">タグ：<% post_image.tags.each do |tag| %>
-            <%= link_to tag.name, post_images_path(name: tag.id), class: "card-link" %>
-          <% end %>
-        </li>
-        <li class="list-group-item">いいね：❤️<%= post_image.favorites.count %></li>
         <li class="list-group-item">
-          オススメ度！：<div id="star_<%= post_image.id %>"></div>
-                      <script>
-                        $(document).on('turbolinks:load', function() {
-                          let elem = document.querySelector('#star_<%= post_image.id %>');
-                          if (elem == null) return;
-                          elem.innerHTML = "";
-                          let opt = {
-                            starOn: "<%= asset_path('star-on.png') %>",
-                            starOff: "<%= asset_path('star-off.png') %>",
-                            starHalf: "<%= asset_path('star-half.png') %>",
-                            score: "<%= post_image.star %>",
-                            readOnly: true,
-                          };
-                          raty(elem, opt);
-                        });
-                      </script>
-          </li>
-        <li class="list-group-item">投稿日：<%= post_image.created_at.strftime('%Y/%m/%d') %></li>
-        <li class="list-group-item">コメント：
-          <%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class: "card-link" %>
+          <div class="d-flex">
+            <div class="p-2">❤️<%= post_image.favorites.count %></div>
+            <div class="p-2">
+              <div id="star_<%= post_image.id %>"></div>
+                <script>
+                  $(document).on('turbolinks:load', function() {
+                    let elem = document.querySelector('#star_<%= post_image.id %>');
+                    if (elem == null) return;
+                    elem.innerHTML = "";
+                    let opt = {
+                      starOn: "<%= asset_path('star-on.png') %>",
+                      starOff: "<%= asset_path('star-off.png') %>",
+                      starHalf: "<%= asset_path('star-half.png') %>",
+                      score: "<%= post_image.star %>",
+                      readOnly: true,
+                    };
+                    raty(elem, opt);
+                  });
+                </script>
+            </div>
+            <div class="p-2"><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></div>
+          </div>
         </li>
         <li class="list-group-item">
-          <span>ユーザー：<%= image_tag post_image.user.get_profile_image(70,70), class:"rounded" %></span>
+          <span><%= image_tag post_image.user.get_profile_image(70,70), class:"rounded" %></span>
           <span><%= post_image.user.name %></span>
+          <span class="p-2"><%= post_image.created_at.strftime('%Y/%m/%d') %></span>
         </li>
         <li class="list-group-item text-center">
           <%= link_to "詳細画面", post_image_path(post_image.id), class: "btn btn-success m-0" %>

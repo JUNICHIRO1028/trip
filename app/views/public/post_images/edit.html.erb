@@ -39,14 +39,16 @@
             </div>
 
 <!--タグ機能-->
-          <p>タグをつけよう！</p>
+          <p><i class="fa-solid fa-hashtag"></i>タグをつけよう！</p>
             <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
                 <%= tag.label do %>
                   <%= tag.check_box %>
                   <%= tag.text %>
                 <% end %>
             <% end %>
-          <p>オススメ度！</p>
+
+<!--star機能-->
+          <p><i class="fa-solid fa-star"></i>オススメ度！※変更できません</p>
           <div id="star_<%= @post_image.id %>"></div>
                         <script>
                           $(document).on('turbolinks:load', function() {

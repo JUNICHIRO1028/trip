@@ -39,7 +39,7 @@
                 </li>
                 <li class="nav-item">
                   <%= link_to user_path(current_user.id), class:'nav-link text-dark' do %>
-                    <i class="fa-regular fa-address-card"></i> マイページ
+                    <i class="fa-solid fa-user"></i> マイページ
                   <% end %>
                 </li>
                 <li class="nav-item">
@@ -88,6 +88,9 @@
           </li>
           <li class="nav-item">
             <%= link_to "ログイン", user_session_path, class:'nav-link text-white' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "nav-link text-white"%>
           </li>
         </ul>
       </footer>
