@@ -1,7 +1,10 @@
+<h5 class="border-bottom shadow-sm m-5 p-2 text-center">
+  <i class="fa-solid fa-magnifying-glass"></i> 検索結果
+</h5>
+
 <div class="container-fluid">
   <div class="row m-5">
     <div class="col-md-4 p-2">
-      <h5>検索結果</h5>
       <!--検索対象モデルがUserの時 -->
     <% if @range == "ユーザー名" %>
       <h5>検索ワード "<%= @word %>"</h5>
