@@ -19,13 +19,13 @@ class Public::PostImagesController < ApplicationController
     @tags = Tag.all
 
     if params[:latest]
-      @post_images = params[:name].present? ? Tag.find(params[:name]).post_images : PostImage.latest
+      @post_images = params[:name].present? ? Tag.find(params[:name]).post_images : PostImage.latest.page(params[:page])
     elsif params[:old]
-      @post_images = params[:name].present? ? Tag.find(params[:name]).post_images : PostImage.old
+      @post_images = params[:name].present? ? Tag.find(params[:name]).post_images : PostImage.old.page(params[:page])
     elsif params[:star_count]
-      @post_images = params[:name].present? ? Tag.find(params[:name]).post_images : PostImage.star_count
+      @post_images = params[:name].present? ? Tag.find(params[:name]).post_images : PostImage.star_count.page(params[:page])
     else
-      @post_images = params[:name].present? ? Tag.find(params[:name]).post_images : PostImage.all
+      @post_images = params[:name].present? ? Tag.find(params[:name]).post_images : PostImage.all.page(params[:page])
     end
   end
 
@@ -51,7 +51,7 @@ class Public::PostImagesController < ApplicationController
   def destroy
     post_image = PostImage.find(params[:id])
     post_image.destroy
-    redirect_to user_path
+    redirect_to user_path(current_user)
   end
 
   private

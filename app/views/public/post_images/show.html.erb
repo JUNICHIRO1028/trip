@@ -93,7 +93,7 @@
           </li>
           <% if @post_image.user == current_user %>
           <li class="list-group-item text-center">
-            <%= link_to "この投稿を削除する", post_image_path(@post_image), method: :delete, class:"btn btn-outline-danger" %>
+            <%= link_to "この投稿を削除する", post_image_path(@post_image), method: :delete, "data-confirm" => "本当に削除しますか？？", class:"btn btn-outline-danger" %>
             <%= link_to "この投稿を編集する", edit_post_image_path(@post_image), class:"btn btn-outline-info" %>
           </li>
           <% end %>
