@@ -22,3 +22,5 @@
 
 <!-- ユーザーの投稿一覧_list -->
 <%= render 'public/post_images/list', post_images: @post_images, tags: @tags %>
+<%= paginate @post_images, theme: 'bootstrap-5' %>
+

@@ -67,7 +67,7 @@
 
       <main>
         <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %> alert-dismissible fade show position-fixed fixed-top w-25 mr-auto mt-10 mr-3" role="alert">
+          <div class="alert alert-<%= key %> alert-dismissible alert-primary fade show" role="alert">
         <%= value %>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -88,9 +88,6 @@
           </li>
           <li class="nav-item">
             <%= link_to "ログイン", user_session_path, class:'nav-link text-white' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "nav-link text-white"%>
           </li>
         </ul>
       </footer>
