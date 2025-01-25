@@ -19,13 +19,13 @@ class Public::PostImagesController < ApplicationController
     @tags = Tag.all
 
     if params[:latest]
-      @post_images = params[:name].present? ? Tag.find(params[:name]).post_images : PostImage.latest.page(params[:page])
+      @post_images = params[:name].present? ? Tag.find(params[:name]).post_images : PostImage.latest
     elsif params[:old]
-      @post_images = params[:name].present? ? Tag.find(params[:name]).post_images : PostImage.old.page(params[:page])
+      @post_images = params[:name].present? ? Tag.find(params[:name]).post_images : PostImage.old
     elsif params[:star_count]
-      @post_images = params[:name].present? ? Tag.find(params[:name]).post_images : PostImage.star_count.page(params[:page])
+      @post_images = params[:name].present? ? Tag.find(params[:name]).post_images : PostImage.star_count
     else
-      @post_images = params[:name].present? ? Tag.find(params[:name]).post_images : PostImage.all.page(params[:page])
+      @post_images = params[:name].present? ? Tag.find(params[:name]).post_images : PostImage.all
     end
   end
 
