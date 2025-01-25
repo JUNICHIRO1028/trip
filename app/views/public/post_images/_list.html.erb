@@ -40,7 +40,8 @@
       <div class="card-body">
         <h5 class="card-title text-success text-center "><%= post_image.title %></h5>
         <p class="card-text"><i class="fa-solid fa-pen-fancy"></i><%= post_image.body %></p>
-        <p class="card-text"><i class="fa-solid fa-location-dot"></i><%= post_image.address %></p>
+        <p class="card-text"><i class="fa-solid fa-location-dot"></i><%= post_image.postcode %></p>
+        <p class="card-text"><i class="fa-solid fa-map"></i><%= post_image.address %></p>
         <p class="card-text"><% post_image.tags.each do |tag| %>
             <i class="fa-solid fa-hashtag"></i>
             <%= link_to tag.name, post_images_path(name: tag.id) %>

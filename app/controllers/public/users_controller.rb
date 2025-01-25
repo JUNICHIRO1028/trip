@@ -1,10 +1,10 @@
 class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
-  before_action :check_user_status,  only:[:show]
+  before_action :guest_access, only: [:edit]
 
   def show
     @user = User.find(params[:id])
-    @post_images = @user.post_images.page(params[:page])
+    @post_images = @user.post_images
     @tags = Tag.all
   end
 
@@ -49,12 +49,11 @@ class Public::UsersController < ApplicationController
     end
   end
 
-  def check_user_status
+  def guest_access
     user = User.find(params[:id])
-    if user.is_deleted
+    if user.email == 'guest@example.com'
+      flash[:notice] = "本登録をお願いします。"
       redirect_to root_path
     end
   end
-
-
 end
