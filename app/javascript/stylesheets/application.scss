@@ -11,8 +11,8 @@
 
 .ps-absolute {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 48%;
+  left: 40%;
 }
 
 .filter {
@@ -34,3 +34,10 @@
   width: 250px;
 }
 
+@media screen and (max-width: 425px) {
+  .ps-absolute {
+    position: absolute;
+    top: 40%;
+    left: 25%;
+  }
+}
