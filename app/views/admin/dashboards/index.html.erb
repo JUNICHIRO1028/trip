@@ -3,20 +3,20 @@
     <p>メモ-trueなら退会ユーザー、消したらそのメアドで再登録できる</p>
   <table class="table mt-3">
     <tr>
-      <th class="col-2">ユーザーID</th>
-      <th class="col-2">名前</th>
-      <th class="col-4">メール</th>
-      <th class="col-3">false=入会中<br>true=退会中</th>
-      <th class="col-1">ボタン</th>
+      <th>ユーザーID</th>
+      <th>名前</th>
+      <th>メール</th>
+      <th>false=入会中<br>true=退会中</th>
+      <th>ボタン</th>
     </tr>
     <% @users.each do |user| %>
     <tr>
-      <td class="col-2"><%= user.id %></td>
-      <td class="col-2"><%= user.name %></td>
-      <td class="col-4"><%= user.email %></td>
-      <td class="col-3"><%= user.is_deleted %></td>
-      <td class="col-1"><%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %></td>
-    </tr>
+      <td><%= user.id %></td>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.is_deleted %></td>
+      <td><%= link_to '完全削除', admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %></td>
+    </td>
     <% end %>
   </table>
 </div>
