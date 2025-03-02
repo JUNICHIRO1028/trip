@@ -1,4 +1,4 @@
-# Trip岩手
+# TOKOIWATE
 ## サイト概要
 ### サイトテーマ
 岩手の名スポットを投稿したり、検索できるレビューサイト
@@ -18,7 +18,12 @@
 
 ​
 ## 設計書
-後ほど作成予定
+・AWS構成図</br>
+![Image](https://github.com/user-attachments/assets/06c4d63b-951b-4770-b98a-d5e6ba7ddeb8)
+
+・ER図</br>
+![Image](https://github.com/user-attachments/assets/46f44032-72ca-42e4-b8dc-c4739b9ad865)
+
 ​
 ## 開発環境
 - OS：Linux(CentOS)
